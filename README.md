@@ -1,0 +1,2 @@
+# Sol
+Sol Discord-bot
