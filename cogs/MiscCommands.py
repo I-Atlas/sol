@@ -27,9 +27,11 @@ class MiscCommands(commands.Cog):
         await ctx.message.delete()  # delete your message
         user = ctx.message.author if (member == None) else member
         if user.activity:
-            await ctx.send(f"User {user.mention} plays **{user.activity}**")
+            em = discord.Embed(description=f'User {user.mention} plays **{user.activity}**', color=0xa9ffda)
+            await ctx.send(embed=em)
         else:
-            await ctx.send(f"User {user.mention} doesn’t play anything")
+            em = discord.Embed(description=f'User {user.mention} doesn’t play anything**', color=0xa9ffda)
+            await ctx.send(embed=em)
 
 
 def setup(bot):
