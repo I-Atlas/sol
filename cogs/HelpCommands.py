@@ -1,3 +1,4 @@
+import platform
 import asyncio
 import discord
 from discord.ext import commands
@@ -7,6 +8,10 @@ class HelpCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.pages = []
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('- - - - -\nHelpCommands has been loaded!')
 
     async def fetchPage(self, selectedPage):
         emb = discord.Embed(title="help", colour=0xff0077)
@@ -20,6 +25,7 @@ class HelpCommands(commands.Cog):
         await msg.add_reaction("❌")
 
     @commands.command()
+    @commands.has_permissions()
     async def help(self, ctx):
         """test"""
         page = []
@@ -74,6 +80,29 @@ class HelpCommands(commands.Cog):
             elif react.emoji == "❌":
                 await msg.delete()
                 break
+
+    @commands.command(name='stats', aliases=['st'])
+    @commands.has_permissions()
+    async def stats(self, ctx):
+        """
+        A command that displays bot stats.
+        """
+        number_of_servers = len(self.bot.guilds)
+        number_of_members = len(set(self.bot.get_all_members()))
+
+        embed = discord.Embed(title=f'{self.bot.user.name} Stats', description='\uFEFF', color=ctx.author.color,
+                              timestamp=ctx.message.created_at)
+
+        embed.add_field(name='Python version', value=platform.python_version())
+        embed.add_field(name='discord.py version', value=discord.__version__)
+        embed.add_field(name='Total guilds', value=number_of_servers)
+        embed.add_field(name='Total users', value=number_of_members)
+        embed.add_field(name='Bot developers', value='<@271684584863825920>')
+
+        embed.set_footer(text=f'Hello, world! | {self.bot.user.name}')
+        embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+
+        await ctx.send(embed=embed)
 
 
 def setup(bot):
