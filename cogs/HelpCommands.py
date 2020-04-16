@@ -1,7 +1,11 @@
+import os
 import platform
 import asyncio
 import discord
+from dotenv import load_dotenv
 from discord.ext import commands
+
+load_dotenv()
 
 
 class HelpCommands(commands.Cog):
@@ -97,7 +101,7 @@ class HelpCommands(commands.Cog):
         embed.add_field(name='discord.py version', value=discord.__version__)
         embed.add_field(name='Total guilds', value=number_of_servers)
         embed.add_field(name='Total users', value=number_of_members)
-        embed.add_field(name='Bot developers', value='<@271684584863825920>')
+        embed.add_field(name='Bot developers', value=os.getenv('AUTHOR'))
 
         embed.set_footer(text=f'Hello, world! | {self.bot.user.name}')
         embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url)
