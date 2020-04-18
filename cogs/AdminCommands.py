@@ -13,9 +13,26 @@ class AdminCommands(commands.Cog):
 
     @commands.command(name='ban', aliases=['banuser'])
     @commands.has_permissions(administrator=True)
-    async def ban_user_command(self, ctx, member: discord.Member = None, reason=None):
+    async def ban(self, ctx, member: discord.Member):
+        await ctx.guild.ban(member)
         await ctx.message.delete()  # delete your message
         embed = discord.Embed(description=f'User *{member.mention}* has been banned.', color=0xa9ffda)
+        await ctx.channel.send(embed=embed)  # embed
+
+    @commands.command(name='unban', aliases=['unbanuser'])
+    @commands.has_permissions(administrator=True)
+    async def unban(self, ctx, member: discord.Member):
+        await ctx.guild.unban(member)
+        await ctx.message.delete()  # delete your message
+        embed = discord.Embed(description=f'User *{member.mention}* has been unbanned.', color=0xa9ffda)
+        await ctx.channel.send(embed=embed)  # embed
+
+    @commands.command(name='kick', aliases=['kickuser'])
+    @commands.has_permissions(administrator=True)
+    async def kick(self, ctx, member: discord.Member):
+        await ctx.guild.kick(member)
+        await ctx.message.delete()  # delete your message
+        embed = discord.Embed(description=f'User *{member.mention}* has been kicked.', color=0xa9ffda)
         await ctx.channel.send(embed=embed)  # embed
 
     @commands.command(name='clear', aliases=['cl'])
