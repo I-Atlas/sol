@@ -12,11 +12,14 @@ Sol Discord Bot
 ## Getting Started
 Sol is a Discord bot written in Python.
 
-## Commands
+## Prefix
 Commands are, by default, invoked by typing in `!` followed by a command's name. Typing in `!help` will cause Sol to direct message you a list of commands for you to browse. That list is dynamically updated based on the code and, therefore, will always be up to date.
 
 Server administrators can choose to set a custom prefix to invoke commands. This custom prefix can be any string input, including emojis or mentions.
 
-## Main Features
-
-<>
+## Modules
+At the moment, Sol can:
+* Moderation
+* Fun
+* Informative
+* Customizable embed color
