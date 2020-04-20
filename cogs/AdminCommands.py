@@ -13,11 +13,33 @@ class AdminCommands(commands.Cog):
 
     @commands.command(name='ban', aliases=['banuser'])
     @commands.has_permissions(administrator=True)
-    async def ban(self, ctx, member: discord.Member):
-        await ctx.guild.ban(member)
-        await ctx.message.delete()  # delete your message
-        embed = discord.Embed(description=f'User *{member.mention}* has been banned.', color=0xa9ffda)
-        await ctx.channel.send(embed=embed)  # embed
+    async def ban(self, ctx, member: discord.Member = None, reason=None):
+        await ctx.message.delete()
+        if member is None:
+            embed = discord.Embed(title='Error', description=f'Please specify someone to ban.', color=0xf75252, delete_after=10)
+            await ctx.send(embed=embed)
+        elif member is ctx.message.author:
+            embed = discord.Embed(title='Error', description=f'You cannot ban yourself', color=0xf75252, delete_after=10)
+            await ctx.send(embed=embed)
+        else:
+            if reason is None:
+                embed = discord.Embed(title='Ban', description=f'{ctx.author.mention} banned {member.mention}', color=0xa9ffda, delete_after=10)
+                await ctx.send(embed=embed)
+                try:
+                    await member.send(f'You has been banned on server {ctx.guild.name}')
+                except Exception:
+                    print('Ban error')
+                finally:
+                    await ctx.guild.ban(member)
+            elif reason is not None:
+                embed = discord.Embed(title='Ban', description=f'{ctx.author.mention} banned {member.mention} with reason: {reason}', color=0xa9ffda, delete_after=10)
+                await ctx.send(embed=embed)
+                try:
+                    await member.send(f'You has been banned on server {ctx.guild.name} with reason: {reason}')
+                except Exception:
+                    print('Ban error')
+                finally:
+                    await ctx.guild.ban(member)
 
     @commands.command(name='unban', aliases=['unbanuser'])
     @commands.has_permissions(administrator=True)
