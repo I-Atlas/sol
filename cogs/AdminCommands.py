@@ -19,46 +19,64 @@ class AdminCommands(commands.Cog):
             embed = discord.Embed(title='Error', description=f'Please specify someone to ban.', color=0xf75252, delete_after=10)
             await ctx.send(embed=embed)
         elif member is ctx.message.author:
-            embed = discord.Embed(title='Error', description=f'You cannot ban yourself', color=0xf75252, delete_after=10)
+            embed = discord.Embed(title='Error', description=f'You cannot ban yourself.', color=0xf75252, delete_after=10)
             await ctx.send(embed=embed)
         else:
             if reason is None:
-                embed = discord.Embed(title='Ban', description=f'{ctx.author.mention} banned {member.mention}', color=0xa9ffda, delete_after=10)
+                embed = discord.Embed(title='Ban', description=f'{ctx.author.mention} banned {member.mention}.', color=0xa9ffda, delete_after=10)
                 await ctx.send(embed=embed)
                 try:
-                    await member.send(f'You has been banned on server {ctx.guild.name}')
+                    embed = discord.Embed(title='Ban', description=f'You has been banned on server {ctx.guild.name}.', color=0xa9ffda)
+                    await ctx.send(embed=embed)
                 except Exception:
                     print('Ban error')
                 finally:
                     await ctx.guild.ban(member)
             elif reason is not None:
-                embed = discord.Embed(title='Ban', description=f'{ctx.author.mention} banned {member.mention} with reason: {reason}', color=0xa9ffda, delete_after=10)
+                embed = discord.Embed(title='Ban', description=f'{ctx.author.mention} banned {member.mention} with reason: {reason}.', color=0xa9ffda, delete_after=10)
                 await ctx.send(embed=embed)
                 try:
-                    await member.send(f'You has been banned on server {ctx.guild.name} with reason: {reason}')
+                    embed = discord.Embed(title='Ban', description=f'You has been banned on server {ctx.guild.name} with reason: {reason}.', color=0xa9ffda)
+                    await member.send(embed=embed)
                 except Exception:
                     print('Ban error')
                 finally:
                     await ctx.guild.ban(member)
 
-    @commands.command(name='unban', aliases=['unbanuser'])
-    @commands.has_permissions(administrator=True)
-    async def unban(self, ctx, member: discord.Member):
-        await ctx.guild.unban(member)
-        await ctx.message.delete()  # delete your message
-        embed = discord.Embed(description=f'User *{member.mention}* has been unbanned.', color=0xa9ffda)
-        await ctx.channel.send(embed=embed)  # embed
-
     @commands.command(name='kick', aliases=['kickuser'])
     @commands.has_permissions(administrator=True)
-    async def kick(self, ctx, member: discord.Member):
-        await ctx.guild.kick(member)
-        await ctx.message.delete()  # delete your message
-        embed = discord.Embed(description=f'User *{member.mention}* has been kicked.', color=0xa9ffda)
-        await ctx.channel.send(embed=embed)  # embed
+    async def kick(self, ctx, member: discord.Member = None, reason=None):
+        await ctx.message.delete()
+        if member is None:
+            embed = discord.Embed(title='Error', description=f'Please specify someone to kick.', color=0xf75252, delete_after=10)
+            await ctx.send(embed=embed)
+        elif member is ctx.message.author:
+            embed = discord.Embed(title='Error', description=f'You cannot kick yourself.', color=0xf75252, delete_after=10)
+            await ctx.send(embed=embed)
+        else:
+            if reason is None:
+                embed = discord.Embed(title='Kick', description=f'{ctx.author.mention} kicked {member.mention}.', color=0xa9ffda, delete_after=10)
+                await ctx.send(embed=embed)
+                try:
+                    embed = discord.Embed(title='Kick', description=f'You has been kicked from the server {ctx.guild.name}.', color=0xa9ffda)
+                    await member.send(embed=embed)
+                except Exception:
+                    print('Kick error')
+                finally:
+                    await ctx.guild.kick(member)
+            elif reason is not None:
+                embed = discord.Embed(title='Kick', description=f'{ctx.author.mention} kicked {member.mention} with reason: {reason}.', color=0xa9ffda, delete_after=10)
+                await ctx.send(embed=embed)
+                try:
+                    embed = discord.Embed(title='Kick', description=f'You has been kicked from the server {ctx.guild.name} with reason: {reason}.', color=0xa9ffda)
+                    await member.send(embed=embed)
+                except Exception:
+                    print('Kick error')
+                finally:
+                    await ctx.guild.kick(member)
 
     @commands.command(name='clear', aliases=['cl'])
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=100):
         """
         A command that clear chat.
