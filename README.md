@@ -1,7 +1,8 @@
 <h1 align="center">
+<a href="https://github.com/I-Atlas/Sol"><img src="https://imgur.com/fDxHk3L.png" alt="Sol"></a>
+<br>
 <br>
 Sol Discord Bot
-<br>
 </h1>
 
 <p align="center">
