@@ -14,6 +14,9 @@ class AdminCommands(commands.Cog):
     @commands.command(name='ban', aliases=['banuser'])
     @commands.has_permissions(administrator=True)
     async def ban(self, ctx, member: discord.Member = None, reason=None):
+        """
+        A command that ban users.
+        """
         await ctx.message.delete()
         if member is None:
             embed = discord.Embed(title='Error', description=f'Please specify someone to ban.', color=0xf75252, delete_after=10)
@@ -46,6 +49,9 @@ class AdminCommands(commands.Cog):
     @commands.command(name='kick', aliases=['kickuser'])
     @commands.has_permissions(administrator=True)
     async def kick(self, ctx, member: discord.Member = None, reason=None):
+        """
+        A command that kick users.
+        """
         await ctx.message.delete()
         if member is None:
             embed = discord.Embed(title='Error', description=f'Please specify someone to kick.', color=0xf75252, delete_after=10)
@@ -121,4 +127,7 @@ class AdminCommands(commands.Cog):
 
 
 def setup(bot):
+    """
+    Cog setup.
+    """
     bot.add_cog(AdminCommands(bot))
