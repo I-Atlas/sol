@@ -1,13 +1,18 @@
 <h1 align="center">
-<a href="https://github.com/I-Atlas/Sol"><img src="https://imgur.com/fhaWUrE.png" width="500" alt="Sol"></a>
-<br>
-<br>
-Sol Discord Bot
+    <a href="https://github.com/I-Atlas/Sol">
+    <img src="https://imgur.com/fhaWUrE.png" width="500" alt="Sol">
+    </a>
+    <br>
+    <br>
+    Sol Discord Bot
+    <br>
+    <br>
 </h1>
-
-<p align="center">
-<a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/Made%20With-Python%203.8-blue.svg?style=for-the-badge" alt="Made with Python 3.8"></a>
-</p>
+    <p align="center">
+        <a href="https://www.python.org/downloads/">
+            <img src="https://img.shields.io/badge/Made%20With-Python%203.8-blue.svg?style=for-the-badge" alt="Made with Python 3.8">
+        </a>
+    </p>
 
 
 ## Getting Started
