@@ -23,9 +23,11 @@ Commands are, by default, invoked by typing in `!` followed by a command's name.
 
 Server administrators can choose to set a custom prefix to invoke commands. This custom prefix can be any string input, including emojis or mentions.
 
+## Token
+The token is located in the .env file, in the main directory
+
 ## Modules
 At the moment, Sol can:
 * Moderation
 * Fun
 * Informative
-* Customizable embed color
