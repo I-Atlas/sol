@@ -12,10 +12,6 @@ class Events(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_ready(self):
-        print('- - - - -\nCommandEvents has been loaded!')
-
-    @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         print(ctx.command.name + ' was invoked incorrectly.')
         print(error)
