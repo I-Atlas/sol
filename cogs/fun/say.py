@@ -7,13 +7,18 @@ from discord.ext import commands
 class Say(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Makes the bot say something"
+        self.desc = "Sends a message on behalf of the bot."
         self.usage = "say [text]"
 
     @commands.command(name='say', aliases=['s'])
     @commands.has_permissions()
     async def say(self, ctx, *, text):
-        await ctx.send(text)  # Sending a message to the channel you specified
+        if not text:
+            await ctx.send("Please specify something to say.")
+        try:
+            await ctx.send(text)
+        except:
+            await ctx.send("I don't have permission to send messages.")
 
 
 # Link to bot
