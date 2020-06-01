@@ -1,5 +1,4 @@
 # Imports
-import discord
 from discord.ext import commands
 
 
@@ -13,6 +12,7 @@ class Say(commands.Cog):
     @commands.command(name='say', aliases=['s'])
     @commands.has_permissions()
     async def say(self, ctx, *, text):
+        await ctx.message.delete()
         if not text:
             await ctx.send("Please specify something to say.")
         try:
