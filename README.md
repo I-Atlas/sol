@@ -19,12 +19,17 @@
 Sol is a Discord bot written in Python.
 
 ## Prefix
-Commands are, by default, invoked by typing in `!` followed by a command's name. Typing in `!help` will cause Sol to direct message you a list of commands for you to browse. That list is dynamically updated based on the code and, therefore, will always be up to date.
+Default prefix is `!`. Enter `!help` to view the list of available commands. That list is dynamically updated.
 
-Server administrators can choose to set a custom prefix to invoke commands. This custom prefix can be any string input, including emojis or mentions.
+Server administrators can set a custom prefix to invoke commands. This custom prefix can be any string input, including emojis or mentions.
+
+## Requirements
+* Python 3.8 +
+* You can find all the necessary modules in the file `requirements.txt` in the main directory.
+
 
 ## Token
-The token is located in the .env file, in the main directory
+The token is located in the .env file, in the main directory.
 
 ## Modules
 At the moment, Sol can:
