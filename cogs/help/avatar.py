@@ -7,12 +7,12 @@ from discord.ext import commands
 class Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Opens user avatar"
+        self.desc = "Opens user avatar."
         self.usage = "avatar [user]"
 
     @commands.command(name='avatar', aliases=['pp'])
     @commands.has_permissions()
-    async def avatar(self, ctx, member: discord.User = None):
+    async def avatar(self, ctx, member: discord.Member = None):
         if not member:
             member = ctx.author
         try:
@@ -25,7 +25,7 @@ class Avatar(commands.Cog):
 
             await ctx.send(embed=embed)
         except:
-            await ctx.send("I can`t open this user's avatar")
+            await ctx.send("I can`t open this user's avatar.")
 
 
 # Link to bot
