@@ -19,7 +19,7 @@ class Clear(commands.Cog):
         embed = discord.Embed(description=f'Deleted *{amount}* messages', color=0xa9ffda)
         await ctx.send(embed=embed)  # embed
         await asyncio.sleep(3)  # sleep timer
-        await ctx.channel.purge(limit=1)  # delete bot message
+        await ctx.channel.purge(limit=1)  # delete bot message after 3 seconds
 
 
 # Link to bot

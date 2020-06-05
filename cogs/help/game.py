@@ -13,14 +13,14 @@ class Game(commands.Cog):
     @commands.command(name='game', aliases=['g'])
     @commands.has_permissions()
     async def game(self, ctx, member: discord.Member = None):
-        await ctx.message.delete()  # delete your message
+        await ctx.message.delete()
         user = ctx.message.author if (member is None) else member
         if user.activity:
             embed = discord.Embed(description=f'User {user.mention} plays **{user.activity}**', color=0xa9ffda)
-            await ctx.send(embed=embed)
+            return await ctx.send(embed=embed)
         else:
             embed = discord.Embed(description=f'User {user.mention} doesn’t play anything**', color=0xa9ffda)
-            await ctx.send(embed=embed)
+            return await ctx.send(embed=embed)
 
 
 # Link to bot

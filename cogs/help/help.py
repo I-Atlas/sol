@@ -7,7 +7,7 @@ from discord.ext import commands
 class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "The bot's help command."
+        self.desc = "The Sol's help command."
         self.usage = "help [category]"
 
 

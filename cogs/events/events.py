@@ -22,7 +22,6 @@ class Events(commands.Cog):
 
             if ctx.command.name in commands_tally:
                 commands_tally[ctx.command.name] += 1
-
             else:
                 commands_tally[ctx.command.name] = 1
             print(commands_tally)

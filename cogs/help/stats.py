@@ -31,7 +31,7 @@ class Stats(commands.Cog):
         embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
         embed.set_author(name=f" | Stats", icon_url=self.bot.user.avatar_url)
 
-        await ctx.send(embed=embed)
+        return await ctx.send(embed=embed)
 
 
 # Link to bot

@@ -14,11 +14,11 @@ class Tts(commands.Cog):
     async def tts(self, ctx, *, text):
         await ctx.message.delete()
         if not text:
-            await ctx.send("Please specify something to say.")
+            return await ctx.send("Please specify something to say.")
         try:
-            await ctx.send(text, tts=True)
+            return await ctx.send(text, tts=True)
         except:
-            await ctx.send("I don't have permission to send TTS messages.")
+            return await ctx.send("I don't have permission to send TTS messages.")
 
 
 # Link to bot

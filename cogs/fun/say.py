@@ -14,11 +14,11 @@ class Say(commands.Cog):
     async def say(self, ctx, *, text):
         await ctx.message.delete()
         if not text:
-            await ctx.send("Please specify something to say.")
+            return await ctx.send("Please specify something to say.")
         try:
-            await ctx.send(text)
+            return await ctx.send(text)
         except:
-            await ctx.send("I don't have permission to send messages.")
+            return await ctx.send("I don't have permission to send messages.")
 
 
 # Link to bot

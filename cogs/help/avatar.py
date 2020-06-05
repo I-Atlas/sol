@@ -22,10 +22,9 @@ class Avatar(commands.Cog):
 
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Avatar", icon_url=self.bot.user.avatar_url)
-
-            await ctx.send(embed=embed)
+            return await ctx.send(embed=embed)
         except:
-            await ctx.send("I can`t open this user's avatar.")
+            return await ctx.send("I can`t open this user's avatar.")
 
 
 # Link to bot

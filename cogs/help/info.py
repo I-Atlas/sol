@@ -34,9 +34,9 @@ class Info(commands.Cog):
             embed.set_thumbnail(url=member.avatar_url)
             embed.set_footer(icon_url=member.avatar_url)
             """
-            await ctx.send(embed=embed)
+            return await ctx.send(embed=embed)
         except:
-            await ctx.send("I can`t show information about this user.")
+            return await ctx.send("I can`t show information about this user.")
 
 
 # Link to bot
