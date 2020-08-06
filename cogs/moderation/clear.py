@@ -8,7 +8,7 @@ from discord.ext import commands
 class Clear(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Deletes messages from a channel."
+        self.desc = "Deletes messages from a channel"
         self.usage = "clear [amount]"
 
     @commands.command(name='clear', aliases=['cl'])

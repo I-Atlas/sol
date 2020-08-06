@@ -8,7 +8,7 @@ from discord.ext import commands
 class Stats(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "A command that displays bot stats."
+        self.desc = "A command that displays bot stats"
         self.usage = "stats"
 
     @commands.command(name='stats', aliases=['st'])

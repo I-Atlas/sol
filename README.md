@@ -1,38 +1,43 @@
 <h1 align="center">
     <a href="https://github.com/I-Atlas/Sol">
-    <img src="https://imgur.com/fhaWUrE.png" width="500" alt="Sol">
+        <img src="https://imgur.com/fhaWUrE.png" width="500" alt="Sol">
+            </a>
+                <br>
+                    <br>
+                        Sol Discord Bot
+                    <br>
+                <br>
+            <a href="https://www.python.org/downloads/">
+        <img src="https://img.shields.io/badge/Made%20With-Python%203.8-blue.svg?style=for-the-badge" alt="Made with Python 3.8">
     </a>
-    <br>
-    <br>
-    Sol Discord Bot
-    <br>
-    <br>
 </h1>
-    <p align="center">
-        <a href="https://www.python.org/downloads/">
-            <img src="https://img.shields.io/badge/Made%20With-Python%203.8-blue.svg?style=for-the-badge" alt="Made with Python 3.8">
-        </a>
-    </p>
 
+## Description
+Sol is a Discord bot written in Python, featuring moderation, informative, and fun commands.
 
-## Getting Started
-Sol is a Discord bot written in Python.
+## Setup
+* First, you need to clone this repository: `git clone https://github.com/I-Atlas/Sol.git`.
+
+* Then you need to `cd Sol` folder.
+
+* Then you need to create a `.env` file in the ***root*** of the project and put your token there. `TOKEN="YOUR TOKEN"`
+
+* Then start the terminal and enter `pip install -r requirements.txt` - this will install dependencies.
+
+* To start the bot just run `python main.py`.
 
 ## Prefix
 Default prefix is `!`. Enter `!help` to view the list of available commands. That list is dynamically updated.
 
-Server administrators can set a custom prefix to invoke commands. This custom prefix can be any string input, including emojis or mentions.
-
 ## Requirements
-* Python 3.8 +
-* You can find all the necessary modules in the file `requirements.txt` in the main directory.
-
+* ***Python 3.8^***
+* ***discord.py==1.4.0^***
+* ***python-dotenv==0.14.0^***
+***
+**You can find all the necessary modules in the file `requirements.txt` in the main directory.**
 
 ## Token
-The token is located in the .env file, in the main directory.
+You need to create the `.env` file, in the main directory and put the token there. 
 
-## Modules
-At the moment, Sol can:
-* Moderation
-* Fun
-* Informative
+## Commands
+**`commands`** === **`cogs`**

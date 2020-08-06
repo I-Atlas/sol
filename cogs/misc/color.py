@@ -8,7 +8,7 @@ from discord.ext import commands
 class Color(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Creates a random rgb color."
+        self.desc = "Creates a random rgb color"
         self.usage = "color"
 
     @commands.command(name='color', aliases=['rc'])

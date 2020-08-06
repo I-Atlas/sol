@@ -1,5 +1,10 @@
+# venv
+venv
+
+# misc
 .env
+
+# packages
 .idea
 __pycache__
 utils
-venv

@@ -8,7 +8,7 @@ from discord.ext import commands
 class Reload(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "A command that reloads commands 🧠."
+        self.desc = "A command that reloads commands 🧠"
         self.usage = "reload [command]"
 
     @commands.command(name='reload', aliases=['rl'])

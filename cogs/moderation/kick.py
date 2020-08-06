@@ -7,7 +7,7 @@ from discord.ext import commands
 class Kick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Kicks a member from the server."
+        self.desc = "Kicks a member from the server"
         self.usage = "kick [user] [reason]"
 
     @commands.command(name='kick', aliases=['kickuser'])

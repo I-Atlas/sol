@@ -7,7 +7,7 @@ from discord.ext import commands
 class Game(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Shows what the user is playing."
+        self.desc = "Shows what the user is playing"
         self.usage = "game [user]"
 
     @commands.command(name='game', aliases=['g'])

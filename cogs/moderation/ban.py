@@ -7,12 +7,12 @@ from discord.ext import commands
 class Ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Bans a member on the server."
+        self.desc = "Bans a member on the server"
         self.usage = "ban [user] [reason]"
 
     @commands.command(name='ban', aliases=['bn'])
     @commands.has_permissions(administrator=True)
-    async def ban(self, ctx, member: discord.Member = None, *, reason=None):
+    async def ban(self, ctx, *, member: discord.Member = None, reason=None):
         await ctx.message.delete()
         if member is None:
             embed = discord.Embed(title='⚠', description=f'Please specify someone to ban.', color=0xf75252,

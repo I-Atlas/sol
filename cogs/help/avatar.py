@@ -7,7 +7,7 @@ from discord.ext import commands
 class Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.desc = "Opens user avatar."
+        self.desc = "Opens user avatar"
         self.usage = "avatar [user]"
 
     @commands.command(name='avatar', aliases=['pp'])
