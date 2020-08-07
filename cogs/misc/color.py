@@ -16,6 +16,7 @@ class Color(commands.Cog):
     async def color(self, ctx):
         color = (random.randint(0, 16777215))
         embed = discord.Embed(description=f'Color generated : ``#{hex(color)[2:]}``', color=color)
+
         return await ctx.send(embed=embed)
 
 

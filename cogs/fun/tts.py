@@ -1,4 +1,5 @@
 # Imports
+import discord
 from discord.ext import commands
 
 
@@ -14,11 +15,22 @@ class Tts(commands.Cog):
     async def tts(self, ctx, *, text):
         await ctx.message.delete()
         if not text:
-            return await ctx.send("Please specify something to say.")
+            embed = discord.Embed(title=f"Please specify something to say.",
+                                  color=ctx.author.color)
+            embed.set_author(name=f" | Say", icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+
+            return await ctx.send(embed=embed)
         try:
             return await ctx.send(text, tts=True)
-        except:
-            return await ctx.send("I don't have permission to send TTS messages.")
+
+        except Exception as error:
+            embed = discord.Embed(title=f"Something went wrong: {error}.",
+                                  color=ctx.author.color)
+            embed.set_author(name=f" | Say", icon_url=self.bot.user.avatar_url)
+            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+
+            return await ctx.send(embed=embed)
 
 
 # Link to bot

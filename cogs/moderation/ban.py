@@ -32,8 +32,12 @@ class Ban(commands.Cog):
                     embed = discord.Embed(title='Ban', description=f'You has been banned on server {ctx.guild.name}.',
                                           color=0xa9ffda)
                     await member.send(embed=embed)
-                except Exception:
-                    print('Ban error')
+                except Exception as error:
+                    embed = discord.Embed(title=f"Something went wrong: {error}.",
+                                          color=ctx.author.color)
+                    embed.set_author(name=f" | Ban", icon_url=self.bot.user.avatar_url)
+                    embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+                    return await ctx.send(embed=embed)
                 finally:
                     await ctx.guild.ban(member)
             elif reason is not None:
@@ -48,8 +52,12 @@ class Ban(commands.Cog):
                                           description=f'You has been banned on server {ctx.guild.name} with reason: {reason}.',
                                           color=0xa9ffda)
                     await member.send(embed=embed)
-                except Exception:
-                    print('Ban error')
+                except Exception as error:
+                    embed = discord.Embed(title=f"Something went wrong: {error}.",
+                                          color=ctx.author.color)
+                    embed.set_author(name=f" | Ban", icon_url=self.bot.user.avatar_url)
+                    embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+                    return await ctx.send(embed=embed)
                 finally:
                     await ctx.guild.ban(member)
 

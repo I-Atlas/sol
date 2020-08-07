@@ -33,8 +33,12 @@ class Kick(commands.Cog):
                                           description=f'You has been kicked from the server {ctx.guild.name}.',
                                           color=0xa9ffda)
                     await member.send(embed=embed)
-                except Exception:
-                    print('Kick error')
+                except Exception as error:
+                    embed = discord.Embed(title=f"Something went wrong: {error}.",
+                                          color=ctx.author.color)
+                    embed.set_author(name=f" | Kick", icon_url=self.bot.user.avatar_url)
+                    embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+                    return await ctx.send(embed=embed)
                 finally:
                     await ctx.guild.kick(member)
             elif reason is not None:
@@ -49,8 +53,12 @@ class Kick(commands.Cog):
                                           description=f'You has been kicked from the server {ctx.guild.name} with reason: {reason}.',
                                           color=0xa9ffda)
                     await member.send(embed=embed)
-                except Exception:
-                    print('Kick error')
+                except Exception as error:
+                    embed = discord.Embed(title=f"Something went wrong: {error}.",
+                                          color=ctx.author.color)
+                    embed.set_author(name=f" | Kick", icon_url=self.bot.user.avatar_url)
+                    embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+                    return await ctx.send(embed=embed)
                 finally:
                     await ctx.guild.kick(member)
 
