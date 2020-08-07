@@ -1,11 +1,11 @@
-# Imports
 import random
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Color(commands.Cog):
+    """Color Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Creates a random rgb color"
@@ -20,6 +20,5 @@ class Color(commands.Cog):
         return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Color(bot))

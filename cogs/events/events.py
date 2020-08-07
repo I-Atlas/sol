@@ -1,4 +1,3 @@
-# Imports
 import random
 import asyncio
 from discord.ext import commands
@@ -6,8 +5,9 @@ from discord.ext import commands
 commands_tally = {}
 
 
-# Main Event Class
 class Events(commands.Cog):
+    """Events Class"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -58,6 +58,5 @@ class Events(commands.Cog):
                 await ctx.channel.send(f'{author} {random.choice(words_list)}')'''
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Events(bot))

@@ -1,12 +1,12 @@
-# Imports
 import discord
 from discord.ext import commands
 from datetime import datetime
 
 
-# Main Command Class
 class Api(commands.Cog):
     def __init__(self, bot):
+        """Api Command Class"""
+
         self.bot = bot
         self.desc = "Opens user avatar"
         self.usage = "avatar [user]"
@@ -43,6 +43,5 @@ class Api(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Api(bot))

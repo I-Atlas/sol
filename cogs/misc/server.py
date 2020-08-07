@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Server(commands.Cog):
+    """Server Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Server information"
@@ -12,9 +12,7 @@ class Server(commands.Cog):
 
     @commands.command(name='server', aliases=['guild'])
     @commands.has_permissions()
-    async def server(self, ctx, guild: discord.Guild = None):
-        if not guild:
-            pass
+    async def server(self, ctx):
         try:
             embed = discord.Embed(color=ctx.author.color)
 
@@ -44,6 +42,5 @@ class Server(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Server(bot))

@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Mute(commands.Cog):
+    """Mute Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Mutes someone on the server"
@@ -46,6 +46,5 @@ class Mute(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Mute(bot))

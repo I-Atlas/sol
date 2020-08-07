@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Avatar(commands.Cog):
+    """Avatar Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Opens user avatar"
@@ -34,6 +34,5 @@ class Avatar(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Avatar(bot))

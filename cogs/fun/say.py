@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Say(commands.Cog):
+    """Say Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Sends a message on behalf of the bot."
@@ -33,6 +33,5 @@ class Say(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Say(bot))

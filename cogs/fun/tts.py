@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Tts(commands.Cog):
+    """TTS Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Sends tts message."
@@ -33,6 +33,5 @@ class Tts(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Tts(bot))

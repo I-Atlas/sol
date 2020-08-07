@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Invite(commands.Cog):
+    """Invite Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Sol`s invite link"
@@ -22,6 +22,5 @@ class Invite(commands.Cog):
         return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Invite(bot))

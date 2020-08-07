@@ -1,11 +1,11 @@
-# Imports
 import aiohttp
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Minecraft(commands.Cog):
+    """Minecraft Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Get the status of or query a Minecraft server"
@@ -57,6 +57,5 @@ class Minecraft(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Minecraft(bot))

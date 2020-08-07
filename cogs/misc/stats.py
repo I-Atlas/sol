@@ -1,11 +1,11 @@
-# Imports
 import platform
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Stats(commands.Cog):
+    """Stats Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "A command that displays bot stats"
@@ -34,6 +34,5 @@ class Stats(commands.Cog):
         return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Stats(bot))

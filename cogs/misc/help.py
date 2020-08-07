@@ -1,4 +1,3 @@
-# Imports
 import os
 import discord
 from discord.ext import commands
@@ -6,8 +5,9 @@ import inspect
 import importlib
 
 
-# Main Command Class
 class Help(commands.Cog):
+    """Help Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "The Sol's help command"
@@ -100,6 +100,5 @@ class Help(commands.Cog):
                             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Help(bot))

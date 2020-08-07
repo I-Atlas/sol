@@ -1,11 +1,11 @@
-# Imports
 import random
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Coin(commands.Cog):
+    """Coin Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Flips a coin."
@@ -23,6 +23,5 @@ class Coin(commands.Cog):
         return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Coin(bot))

@@ -7,4 +7,3 @@ venv
 # packages
 .idea
 __pycache__
-utils

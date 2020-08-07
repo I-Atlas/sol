@@ -1,10 +1,10 @@
-# Imports
 import discord
 from discord.ext import commands
 
 
-# Main Command Class
 class Person(commands.Cog):
+    """Person Command Class"""
+
     def __init__(self, bot):
         self.bot = bot
         self.desc = "User information"
@@ -64,6 +64,5 @@ class Person(commands.Cog):
             return await ctx.send(embed=embed)
 
 
-# Link to bot
 def setup(bot):
     bot.add_cog(Person(bot))
