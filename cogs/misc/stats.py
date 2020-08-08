@@ -22,8 +22,6 @@ class Stats(commands.Cog):
 
         embed.set_image(url=self.bot.user.avatar_url)
 
-        embed.add_field(name='Python version', value=platform.python_version())
-        embed.add_field(name='discord.py version', value=discord.__version__)
         embed.add_field(name='Total guilds', value=number_of_servers)
         embed.add_field(name='Total users', value=number_of_members)
         embed.add_field(name='Bot developers', value=author_id)

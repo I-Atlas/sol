@@ -1,5 +1,6 @@
 python-dotenv
 discord.py
+psutil
 aiohttp
 async-timeout
 attrs

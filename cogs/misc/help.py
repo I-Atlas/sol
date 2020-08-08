@@ -30,8 +30,6 @@ class Help(commands.Cog):
             embed = discord.Embed(color=ctx.author.color)
             embed.add_field(name=":dart:  Fun Commands  :dart:",
                             value=f"See the commands using ``{prefix}help fun``", inline=False)
-            embed.add_field(name=":bookmark_tabs:  Info Commands  :bookmark_tabs:",
-                            value=f"See the commands using ``{prefix}help info``", inline=False)
             embed.add_field(name=":crystal_ball:  Miscellaneous  Commands  :crystal_ball:",
                             value=f"See the commands using ``{prefix}help misc``", inline=False)
             embed.add_field(name=":crossed_swords:  Moderation Commands  :crossed_swords:",
@@ -39,23 +37,12 @@ class Help(commands.Cog):
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
 
-            return await ctx.send(embed=embed)
+            await ctx.send(embed=embed)
 
         elif category == "fun":
 
             embed = discord.Embed(title=":dart:  Fun Commands  :dart:",
                                   description="The most interesting and unique commands out there.",
-                                  color=ctx.author.color)
-            embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-            embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
-
-            return await ctx.send(embed=embed)
-
-        elif category == "info":
-
-            embed = discord.Embed(title=":bookmark_tabs:  Info Commands  :bookmark_tabs:",
-                                  description="Commands giving various information.",
                                   color=ctx.author.color)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
