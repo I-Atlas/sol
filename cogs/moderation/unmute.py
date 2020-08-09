@@ -23,18 +23,18 @@ class Unmute(commands.Cog):
 
         if not member:
             embed = await Utils(self.bot).embed(ctx, title="Please specify a command to unmute.",
-                                                description="", color=ctx.author.color)
+                                                description="", color=0xDE6246)
             return await ctx.send(embed=embed)
 
         if not muted:
             embed = await Utils(self.bot).embed(ctx, title="No muted role on the server.",
-                                                description="", color=ctx.author.color)
+                                                description="", color=0xDE6246)
             return await ctx.send(embed=embed)
 
         if not muted_member:
             embed = await Utils(self.bot).embed(ctx, title="",
                                                 description=f"User {member.mention} isn't muted.",
-                                                color=ctx.author.color)
+                                                color=0xDE6246)
             return await ctx.send(embed=embed)
         try:
             await member.remove_roles(muted)

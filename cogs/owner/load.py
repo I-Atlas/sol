@@ -16,7 +16,7 @@ class Load(commands.Cog):
     async def load(self, ctx, command=None):
         if not command:
             embed = await Utils(self.bot).embed(ctx, title="Please specify a command to load.",
-                                                description="", color=ctx.author.color)
+                                                description="", color=0xDE6246)
             return await ctx.send(embed=embed)
         try:
             self.bot.load_extension(command)

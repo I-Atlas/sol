@@ -19,12 +19,12 @@ class Ban(commands.Cog):
 
         if member is None:
             embed = await Utils(self.bot).embed(ctx, title="Please specify someone to ban.",
-                                                description="", color=0xf75252)
+                                                description="", color=0xDE6246)
             return await ctx.send(embed=embed)
 
         elif member is ctx.message.author:
             embed = await Utils(self.bot).embed(ctx, title="You cannot ban yourself.",
-                                                description="", color=0xf75252)
+                                                description="", color=0xDE6246)
             await ctx.send(embed=embed)
         else:
             if reason is None:
@@ -38,7 +38,7 @@ class Ban(commands.Cog):
 
                     embed = discord.Embed(title="Ban",
                                           description=f'You has been banned on the server {ctx.guild.name}.',
-                                          color=0xa9ffda)
+                                          color=ctx.author.color)
                     await member.send(embed=embed)
 
                 except Exception as error:
@@ -53,13 +53,13 @@ class Ban(commands.Cog):
                     embed = await Utils(self.bot).embed(ctx, title="",
                                                         description=f"{member.mention} banned by {ctx.author.mention} "
                                                                     f"with reason: {reason}.",
-                                                        color=0xa9ffda)
+                                                        color=ctx.author.color)
                     await ctx.send(embed=embed)
 
                     embed = discord.Embed(title="Ban",
                                           description=f"You has been banned on the server {ctx.guild.name} "
                                                       f"with reason: {reason}.",
-                                          color=0xa9ffda)
+                                          color=0xDE6246)
                     await member.send(embed=embed)
 
                 except Exception as error:

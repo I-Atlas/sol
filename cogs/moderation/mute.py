@@ -17,12 +17,12 @@ class Mute(commands.Cog):
         muted = discord.utils.get(ctx.guild.roles, name="Muted")
         if not member:
             embed = await Utils(self.bot).embed(ctx, title="Please specify a command to mute.",
-                                                description="", color=ctx.author.color)
+                                                description="", color=0xDE6246)
 
             return await ctx.send(embed=embed)
 
         if not muted:
-            muted = await ctx.guild.create_role(name="Muted", reason="Sol; Muted role")
+            muted = await ctx.guild.create_role(name="Muted", reason="Sol; Muted role", color=0xDE6246)
             for channel in ctx.guild.channels:
                 await channel.set_permissions(muted, send_messages=False)
         await member.add_roles(muted)

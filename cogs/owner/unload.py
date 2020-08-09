@@ -16,7 +16,7 @@ class Unload(commands.Cog):
     async def unload(self, ctx, command=None):
         if not command:
             embed = await Utils(self.bot).embed(ctx, title="Please specify a command to unload.",
-                                                description="", color=ctx.author.color)
+                                                description="", color=0xDE6246)
             return await ctx.send(embed=embed)
         try:
             self.bot.unload_extension(command)

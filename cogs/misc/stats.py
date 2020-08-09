@@ -15,7 +15,7 @@ class Stats(commands.Cog):
     @commands.has_permissions()
     async def stats(self, ctx):
         try:
-            embed = discord.Embed(color=0xF52100)
+            embed = discord.Embed(color=0xFFCE44)
 
             embed.set_image(url=self.bot.user.avatar_url)
 

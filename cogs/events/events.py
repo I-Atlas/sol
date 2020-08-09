@@ -1,6 +1,7 @@
 import random
 import asyncio
 from discord.ext import commands
+from ..events.utils import Utils
 
 commands_tally = {}
 
@@ -13,8 +14,12 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
+        error_handler = await Utils(self.bot).error(ctx, str(error))
+
         print(ctx.command.name + ' was invoked incorrectly.')
         print(error)
+
+        return await ctx.send(embed=error_handler)
 
     @commands.Cog.listener()
     async def on_command(self, ctx):

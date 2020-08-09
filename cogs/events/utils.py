@@ -10,7 +10,10 @@ class Utils(commands.Cog):
 
     @commands.Cog.listener()
     async def error(self, ctx, error_message):
-        embed = discord.Embed(title=f"Something went wrong!", description=f"{error_message}", color=ctx.author.color)
+        embed = discord.Embed(color=0xDE6246)
+
+        embed.add_field(name=":warning:  Error",
+                        value=f"**Something went wrong:** ``{error_message}``", inline=False)
 
         embed.set_author(name=f" | {(str(ctx.command.name)).capitalize()}", icon_url=self.bot.user.avatar_url)
         embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)

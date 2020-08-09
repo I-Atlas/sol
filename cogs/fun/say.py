@@ -16,7 +16,7 @@ class Say(commands.Cog):
         await ctx.message.delete()
         if not text:
             embed = await Utils(self.bot).embed(ctx, title="Please specify something to say.", description="",
-                                                color=ctx.author.color)
+                                                color=0xDE6246)
             return await ctx.send(embed=embed)
         try:
             return await ctx.send(text)

@@ -24,17 +24,17 @@ class Help(commands.Cog):
     @commands.command(name='help', aliases=['h, info'])
     @commands.has_permissions()
     async def help(self, ctx, *, category=None):
-        prefix = "!"
+        prefix = "~"
         if not category:
 
-            embed = discord.Embed(color=ctx.author.color)
-            embed.add_field(name=":dart:  Fun Commands  :dart:",
+            embed = discord.Embed(color=0x6F00CC)
+            embed.add_field(name=":dart:  Fun Commands",
                             value=f"See the commands using ``{prefix}help fun``", inline=False)
-            embed.add_field(name=":crystal_ball:  Miscellaneous  Commands  :crystal_ball:",
+            embed.add_field(name=":crystal_ball:  Miscellaneous  Commands",
                             value=f"See the commands using ``{prefix}help misc``", inline=False)
-            embed.add_field(name=":crossed_swords:  Moderation Commands  :crossed_swords:",
+            embed.add_field(name=":crossed_swords:  Moderation Commands",
                             value=f"See the commands using ``{prefix}help moderation``", inline=False)
-            embed.add_field(name=":shield:  Owner Commands  :shield:",
+            embed.add_field(name=":shield:  Owner Commands",
                             value=f"See the commands using ``{prefix}help owner``", inline=False)
 
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
@@ -44,9 +44,9 @@ class Help(commands.Cog):
 
         elif category == "fun":
 
-            embed = discord.Embed(title=":dart:  Fun Commands  :dart:",
+            embed = discord.Embed(title=":dart:  Fun Commands",
                                   description="The most interesting and unique commands out there.",
-                                  color=ctx.author.color)
+                                  color=0x21db56)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Fun", icon_url=self.bot.user.avatar_url)
@@ -55,9 +55,9 @@ class Help(commands.Cog):
 
         elif category == "misc":
 
-            embed = discord.Embed(title=":crystal_ball:  Miscellaneous Commands  :crystal_ball:",
+            embed = discord.Embed(title=":crystal_ball:  Miscellaneous Commands",
                                   description="Commands that fit in no special category.",
-                                  color=ctx.author.color)
+                                  color=0x05d4e3)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Misc", icon_url=self.bot.user.avatar_url)
@@ -66,9 +66,9 @@ class Help(commands.Cog):
 
         elif category == "moderation":
 
-            embed = discord.Embed(title=":crossed_swords:  Moderation Commands  :crossed_swords:",
+            embed = discord.Embed(title=":crossed_swords:  Moderation Commands",
                                   description="Control the server with these commands.",
-                                  color=ctx.author.color)
+                                  color=0xe6a081)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Moderation", icon_url=self.bot.user.avatar_url)
@@ -77,9 +77,9 @@ class Help(commands.Cog):
 
         elif category == "owner":
 
-            embed = discord.Embed(title=":shield:  Owner Commands  :shield:",
+            embed = discord.Embed(title=":shield:  Owner Commands",
                                   description="Bot owner`s commands.",
-                                  color=ctx.author.color)
+                                  color=0x8604f0)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Owner", icon_url=self.bot.user.avatar_url)

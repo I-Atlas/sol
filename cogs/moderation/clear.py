@@ -19,7 +19,7 @@ class Clear(commands.Cog):
             await ctx.message.delete()
             await ctx.channel.purge(limit=amount)
 
-            embed = discord.Embed(description=f'Deleted *{amount}* messages', color=0xa9ffda)
+            embed = discord.Embed(description=f'Deleted *{amount}* messages', color=ctx.author.color)
 
             await ctx.send(embed=embed)
             await asyncio.sleep(3)
