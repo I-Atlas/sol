@@ -34,6 +34,9 @@ class Help(commands.Cog):
                             value=f"See the commands using ``{prefix}help misc``", inline=False)
             embed.add_field(name=":crossed_swords:  Moderation Commands  :crossed_swords:",
                             value=f"See the commands using ``{prefix}help moderation``", inline=False)
+            embed.add_field(name=":shield:  Owner Commands  :shield:",
+                            value=f"See the commands using ``{prefix}help owner``", inline=False)
+
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
             embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
 
@@ -46,7 +49,7 @@ class Help(commands.Cog):
                                   color=ctx.author.color)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-            embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
+            embed.set_author(name=f" | Fun", icon_url=self.bot.user.avatar_url)
 
             return await ctx.send(embed=embed)
 
@@ -57,7 +60,7 @@ class Help(commands.Cog):
                                   color=ctx.author.color)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-            embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
+            embed.set_author(name=f" | Misc", icon_url=self.bot.user.avatar_url)
 
             return await ctx.send(embed=embed)
 
@@ -68,22 +71,36 @@ class Help(commands.Cog):
                                   color=ctx.author.color)
             embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-            embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
+            embed.set_author(name=f" | Moderation", icon_url=self.bot.user.avatar_url)
+
+            return await ctx.send(embed=embed)
+
+        elif category == "owner":
+
+            embed = discord.Embed(title=":shield:  Owner Commands  :shield:",
+                                  description="Bot owner`s commands.",
+                                  color=ctx.author.color)
+            embed.add_field(name="Commands", value=self.get_cogs(category), inline=False)
+            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+            embed.set_author(name=f" | Owner", icon_url=self.bot.user.avatar_url)
 
             return await ctx.send(embed=embed)
 
         for cog_folder in os.listdir("cogs"):
             for cog in os.listdir(f"cogs/{cog_folder}"):
                 if f"{category}.py" == cog:
-                    command_module = importlib.import_module(f"cogs.{cog_folder}.{cog[:-3]}")
-                    for name, obj in inspect.getmembers(command_module):
+                    cog_module = importlib.import_module(f"cogs.{cog_folder}.{cog[:-3]}")
+                    for name, obj in inspect.getmembers(cog_module):
                         if inspect.isclass(obj):
                             cog_class = obj(self.bot)
+
                             embed = discord.Embed(title=f"{category.capitalize()} Command",
                                                   description=f"**{cog_class.desc}**\n**Usage:** ``{cog_class.usage}``",
                                                   color=ctx.author.color)
+
                             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
                             embed.set_author(name=f" | Help", icon_url=self.bot.user.avatar_url)
+
                             return await ctx.send(embed=embed)
 
 

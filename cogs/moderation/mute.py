@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from ..events.utils import Utils
 
 
 class Mute(commands.Cog):
@@ -15,10 +16,8 @@ class Mute(commands.Cog):
     async def mute(self, ctx, *, member: discord.Member = None):
         muted = discord.utils.get(ctx.guild.roles, name="Muted")
         if not member:
-            embed = discord.Embed(title=f"Please specify someone to mute.", color=ctx.author.color)
-
-            embed.set_author(name=f" | Mute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+            embed = await Utils(self.bot).embed(ctx, title="Please specify a command to mute.",
+                                                description="", color=ctx.author.color)
 
             return await ctx.send(embed=embed)
 
@@ -29,21 +28,15 @@ class Mute(commands.Cog):
         await member.add_roles(muted)
 
         try:
-            embed = discord.Embed(title=None, description=f"User {member.mention} has been muted  :mute:.",
-                                  color=ctx.author.color)
-
-            embed.set_author(name=f" | Mute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="",
+                                                description=f"User {member.mention} has been muted  :mute:.",
+                                                color=ctx.author.color)
             return await ctx.send(embed=embed)
 
         except Exception as error:
-            embed = discord.Embed(title=f"Something went wrong: {error}.", color=ctx.author.color)
+            error_handler = await Utils(self.bot).error(ctx, str(error))
 
-            embed.set_author(name=f" | Mute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
-            return await ctx.send(embed=embed)
+            return await ctx.send(embed=error_handler)
 
 
 def setup(bot):

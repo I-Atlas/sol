@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from ..events.utils import Utils
 
 
 class Reload(commands.Cog):
@@ -14,32 +15,20 @@ class Reload(commands.Cog):
     @commands.is_owner()
     async def reload(self, ctx, command=None):
         if not command:
-            embed = discord.Embed(title="Please specify a command to reload.",
-                                  color=ctx.author.color)
-
-            embed.set_author(name=f" | Reload", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="Please specify a command to reload.",
+                                                description="", color=ctx.author.color)
             return await ctx.send(embed=embed)
         try:
             self.bot.unload_extension(command)
             self.bot.load_extension(command)
 
         except Exception as error:
-            embed = discord.Embed(title=f"Command {command.split('.')[2]} failed to reload. Error: {error}.",
-                                  color=ctx.author.color)
+            error_handler = await Utils(self.bot).error(ctx, str(error))
 
-            embed.set_author(name=f" | Reload", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
-            return await ctx.send(embed=embed)
+            return await ctx.send(embed=error_handler)
         else:
-            embed = discord.Embed(title=f"The ``{command.split('.')[2]}`` command has been reloaded.",
-                                  color=ctx.author.color)
-
-            embed.set_author(name=f" | Reload", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title=f"The ``{command.split('.')[2]}`` command has been reloaded.",
+                                                description="", color=ctx.author.color)
             return await ctx.send(embed=embed)
 
 

@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from ..events.utils import Utils
 
 
 class Unmute(commands.Cog):
@@ -21,47 +22,32 @@ class Unmute(commands.Cog):
                 muted_member = True
 
         if not member:
-            embed = discord.Embed(title=f"Please specify someone to mute.", color=ctx.author.color)
-
-            embed.set_author(name=f" | Unmute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="Please specify a command to unmute.",
+                                                description="", color=ctx.author.color)
             return await ctx.send(embed=embed)
 
         if not muted:
-            embed = discord.Embed(title=f"No muted role on the server.", color=ctx.author.color)
-
-            embed.set_author(name=f" | Unmute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="No muted role on the server.",
+                                                description="", color=ctx.author.color)
             return await ctx.send(embed=embed)
 
         if not muted_member:
-            embed = discord.Embed(title=None, description=f"User {member.mention} isn't muted.",
-                                  color=ctx.author.color)
-
-            embed.set_author(name=f" | Unmute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="",
+                                                description=f"User {member.mention} isn't muted.",
+                                                color=ctx.author.color)
             return await ctx.send(embed=embed)
         try:
             await member.remove_roles(muted)
 
-            embed = discord.Embed(title=None, description=f"User {member.mention} has been unmuted  :loud_sound:.",
-                                  color=ctx.author.color)
-
-            embed.set_author(name=f" | Unmute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="",
+                                                description=f"User {member.mention} has been unmuted  :loud_sound:.",
+                                                color=ctx.author.color)
             return await ctx.send(embed=embed)
 
         except Exception as error:
-            embed = discord.Embed(title=f"Something went wrong: {error}.", color=ctx.author.color)
+            error_handler = await Utils(self.bot).error(ctx, str(error))
 
-            embed.set_author(name=f" | Unmute", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
-            return await ctx.send(embed=embed)
+            return await ctx.send(embed=error_handler)
 
 
 def setup(bot):

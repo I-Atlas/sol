@@ -1,5 +1,5 @@
-import discord
 from discord.ext import commands
+from ..events.utils import Utils
 
 
 class Tts(commands.Cog):
@@ -15,22 +15,16 @@ class Tts(commands.Cog):
     async def tts(self, ctx, *, text):
         await ctx.message.delete()
         if not text:
-            embed = discord.Embed(title=f"Please specify something to say.",
-                                  color=ctx.author.color)
-            embed.set_author(name=f" | Say", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
+            embed = await Utils(self.bot).embed(ctx, title="Please specify something to tts.", description="",
+                                                color=ctx.author.color)
             return await ctx.send(embed=embed)
         try:
             return await ctx.send(text, tts=True)
 
         except Exception as error:
-            embed = discord.Embed(title=f"Something went wrong: {error}.",
-                                  color=ctx.author.color)
-            embed.set_author(name=f" | Say", icon_url=self.bot.user.avatar_url)
-            embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+            error_handler = await Utils(self.bot).error(ctx, str(error))
 
-            return await ctx.send(embed=embed)
+            return await ctx.send(embed=error_handler)
 
 
 def setup(bot):

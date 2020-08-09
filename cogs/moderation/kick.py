@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from ..events.utils import Utils
 
 
 class Kick(commands.Cog):
@@ -17,68 +18,54 @@ class Kick(commands.Cog):
         await ctx.message.delete()
 
         if member is None:
-            embed = discord.Embed(title='⚠', description=f'Please specify someone to kick.', color=0xf75252,
-                                  delete_after=10)
-
-            await ctx.send(embed=embed)
+            embed = await Utils(self.bot).embed(ctx, title="Please specify someone to kick.",
+                                                description="", color=0xf75252)
+            return await ctx.send(embed=embed)
 
         elif member is ctx.message.author:
-            embed = discord.Embed(title='⚠', description=f'You cannot kick yourself.', color=0xf75252, delete_after=10)
-
+            embed = await Utils(self.bot).embed(ctx, title="You cannot kick yourself.",
+                                                description="", color=0xf75252)
             await ctx.send(embed=embed)
         else:
             if reason is None:
-                embed = discord.Embed(title=None, description=f'{member.mention} kicked by {ctx.author.mention}.',
-                                      color=0xa9ffda)
-                embed.set_author(name=" | Kick", icon_url=self.bot.user.avatar_url)
-                embed.set_footer(text=f" | Kicked by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
-                await ctx.send(embed=embed)
-
                 try:
-                    embed = discord.Embed(title='Kick',
+                    await ctx.guild.kick(member)
+
+                    embed = await Utils(self.bot).embed(ctx, title="",
+                                                        description=f"{member.mention} kicked by {ctx.author.mention}.",
+                                                        color=0xa9ffda)
+                    await ctx.send(embed=embed)
+
+                    embed = discord.Embed(title="Kick",
                                           description=f'You has been kicked from the server {ctx.guild.name}.',
                                           color=0xa9ffda)
-
                     await member.send(embed=embed)
 
                 except Exception as error:
-                    embed = discord.Embed(title=f"Something went wrong: {error}.",
-                                          color=ctx.author.color)
+                    error_handler = await Utils(self.bot).error(ctx, str(error))
 
-                    embed.set_author(name=f" | Kick", icon_url=self.bot.user.avatar_url)
-                    embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
-                    return await ctx.send(embed=embed)
-                finally:
-                    await ctx.guild.kick(member)
+                    return await ctx.send(embed=error_handler)
 
             elif reason is not None:
-                embed = discord.Embed(title=None,
-                                      description=f'{member.mention} kicked by {ctx.author.mention} with reason: {reason}.',
-                                      color=0xa9ffda)
-
-                embed.set_author(name=" | Kick", icon_url=self.bot.user.avatar_url)
-                embed.set_footer(text=f" | Kicked by {ctx.author}.", icon_url=ctx.author.avatar_url)
-
-                await ctx.send(embed=embed)
-
                 try:
-                    embed = discord.Embed(title='Kick',
-                                          description=f'You has been kicked from the server {ctx.guild.name} with reason: {reason}.',
-                                          color=0xa9ffda)
+                    await ctx.guild.kick(member)
 
+                    embed = await Utils(self.bot).embed(ctx, title="",
+                                                        description=f"{member.mention} kicked by {ctx.author.mention} "
+                                                                    f"with reason: {reason}.",
+                                                        color=0xa9ffda)
+                    await ctx.send(embed=embed)
+
+                    embed = discord.Embed(title="Kick",
+                                          description=f"You has been kicked from the server {ctx.guild.name} "
+                                                      f"with reason: {reason}.",
+                                          color=0xa9ffda)
                     await member.send(embed=embed)
 
                 except Exception as error:
-                    embed = discord.Embed(title=f"Something went wrong: {error}.",
-                                          color=ctx.author.color)
-                    embed.set_author(name=f" | Kick", icon_url=self.bot.user.avatar_url)
-                    embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
+                    error_handler = await Utils(self.bot).error(ctx, str(error))
 
-                    return await ctx.send(embed=embed)
-                finally:
-                    await ctx.guild.kick(member)
+                    return await ctx.send(embed=error_handler)
 
 
 def setup(bot):
