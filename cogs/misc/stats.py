@@ -1,4 +1,3 @@
-import discord
 from discord.ext import commands
 from ..events.utils import Utils
 
@@ -15,7 +14,7 @@ class Stats(commands.Cog):
     @commands.has_permissions()
     async def stats(self, ctx):
         try:
-            embed = discord.Embed(color=0xFFCE44)
+            embed = discord.Embed(color=0xFFD700)
 
             embed.set_image(url=self.bot.user.avatar_url)
 

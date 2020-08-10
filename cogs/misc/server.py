@@ -9,7 +9,7 @@ class Server(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Server information"
-        self.usage = "server [user]"
+        self.usage = "server"
 
     @commands.command(name='server', aliases=['guild'])
     @commands.has_permissions()

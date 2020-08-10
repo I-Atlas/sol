@@ -18,7 +18,6 @@ class Mute(commands.Cog):
         if not member:
             embed = await Utils(self.bot).embed(ctx, title="Please specify a command to mute.",
                                                 description="", color=0xDE6246)
-
             return await ctx.send(embed=embed)
 
         if not muted:

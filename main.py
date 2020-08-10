@@ -1,4 +1,3 @@
-# Modules
 import os
 import random
 import discord
@@ -6,13 +5,13 @@ from dotenv import load_dotenv
 from discord.ext import commands, tasks
 
 load_dotenv()  # load .env file
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('~'))
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('>'))
 bot.remove_command('help')
-list_of_status = ['Hello there!', '🌀', '🌌', '✔', '☀', '🌻', '🚀']  # list of activities
+list_of_status = ['Hello there!', '🌀', '☄️', '🔆', '☀', '🌻', '🚀']  # list of activities
 
 
 # Task Loop
-@tasks.loop(minutes=5)
+@tasks.loop(minutes=20)
 async def change_presence():
     await bot.change_presence(status=discord.Status.online,
                               activity=discord.Activity(type=discord.ActivityType.playing,

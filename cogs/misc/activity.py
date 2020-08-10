@@ -13,8 +13,8 @@ class Activity(commands.Cog):
     @commands.command(name='activity', aliases=['act'])
     @commands.has_permissions()
     async def activity(self, ctx, member: discord.Member = None):
-        await ctx.message.delete()
         user = ctx.message.author if (member is None) else member
+
         if user.activity:
             embed = discord.Embed(description=f'User`s {user.mention} activity: **{user.activity}**', color=0xa9ffda)
 

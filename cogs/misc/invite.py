@@ -8,7 +8,7 @@ class Invite(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.desc = "Sol`s invite link"
-        self.usage = "stats"
+        self.usage = "invite"
 
     @commands.command(name='invite', aliases=['inv'])
     @commands.has_permissions()

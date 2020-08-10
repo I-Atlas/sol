@@ -22,7 +22,7 @@ class Utils(commands.Cog):
 
     @commands.Cog.listener()
     async def embed(self, ctx, title, description, color):
-        embed = discord.Embed(title=f"{title}", description=f"{description}", color=color)
+        embed = discord.Embed(title=title, description=description, color=color)
 
         embed.set_author(name=f" | {(str(ctx.command.name)).capitalize()}", icon_url=self.bot.user.avatar_url)
         embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)
