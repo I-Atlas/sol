@@ -16,7 +16,7 @@ class Mute(commands.Cog):
     async def mute(self, ctx, *, member: discord.Member = None):
         muted = discord.utils.get(ctx.guild.roles, name="Muted")
         if not member:
-            embed = await Utils(self.bot).embed(ctx, title="Please specify a command to mute.",
+            embed = await Utils(self.bot).embed(ctx, title="Please specify a user to mute.",
                                                 description="", color=0xDE6246)
             return await ctx.send(embed=embed)
 

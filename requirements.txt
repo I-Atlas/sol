@@ -9,3 +9,4 @@ psutil
 python-dotenv
 websockets
 yarl
+colorama

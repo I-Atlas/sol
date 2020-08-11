@@ -27,7 +27,7 @@ Sol is a Discord bot written in Python, featuring moderation, informative, and f
 * To start the bot just run `python main.py`.
 
 ## Prefix
-Default prefix is `!`. Enter `!help` to view the list of available commands. That list is dynamically updated.
+Default prefix is `>`. Enter `>help` to view the list of available commands. That list is dynamically updated.
 
 ## Requirements
 * ***Python 3.8^***

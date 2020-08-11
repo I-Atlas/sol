@@ -22,7 +22,7 @@ class Unmute(commands.Cog):
                 muted_member = True
 
         if not member:
-            embed = await Utils(self.bot).embed(ctx, title="Please specify a command to unmute.",
+            embed = await Utils(self.bot).embed(ctx, title="Please specify a user to unmute.",
                                                 description="", color=0xDE6246)
             return await ctx.send(embed=embed)
 

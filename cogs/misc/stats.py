@@ -1,3 +1,6 @@
+import time
+import datetime
+import discord
 from discord.ext import commands
 from ..events.utils import Utils
 
@@ -7,6 +10,7 @@ class Stats(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        self.start = time.time()
         self.desc = "A command that displays bot stats"
         self.usage = "stats"
 
@@ -20,6 +24,7 @@ class Stats(commands.Cog):
 
             embed.add_field(name='Total guilds', value=str(len(self.bot.guilds)))
             embed.add_field(name='Total users', value=str(len(set(self.bot.get_all_members()))))
+            embed.add_field(name='Uptime', value=str(datetime.timedelta(seconds=int(round(time.time() - self.start)))))
             embed.add_field(name='Bot developers', value='<@271684584863825920>')
 
             embed.set_footer(text=f" | Requested by {ctx.author}.", icon_url=ctx.author.avatar_url)

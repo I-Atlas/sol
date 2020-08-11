@@ -10,9 +10,9 @@ class Help(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        self.prefix = ">"
         self.desc = "The Sol's help command"
         self.usage = "help [category or command]"
-        self.prefix = ">"
 
     @staticmethod
     def get_cogs(category):
