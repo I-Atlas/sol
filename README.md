@@ -42,4 +42,4 @@ You need to create the `.env` file, in the main directory and put the token ther
 
 ## 📄 License
 
-The project is licensed under the [Apache license 2.0](https://github.com/I-Atlas/sol/LICENSE).
+The project is licensed under the [Apache license 2.0](https://github.com/I-Atlas/sol/blob/master/LICENSE).
